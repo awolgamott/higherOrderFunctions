@@ -5,7 +5,16 @@
 // your function should take an array and a callback as input.
 // it should run the callback on each element in the array.
 // ----------------------------
-
+var forEach = function(array, callback){
+    for (var index = 0; index < array.length; index = index + 1){
+        callback(array[index])
+    } 
+}
+var colorArray = ["blue", "green", "yellow"]
+var sayHi = function(inputElement){
+    console.log("hi " + inputElement)
+}
+console.log(forEach(colorArray, sayHi))
 //  Part II
 // ----------------------------
 // write your own map() function.
@@ -13,7 +22,14 @@
 // it should return a new array, where every element in the 
 // original has been transformed by the callback. .
 // ----------------------------
-
+var someNums = [10, 2, 16]
+var map = function(array, callback){ 
+    var newNums = []
+    for (var index = 0; index < array.length; index = index + 1){
+    	newNums.push(callback(array[index]))
+    }
+    return newNums
+}
 
 //  Part III
 // ----------------------------
@@ -22,7 +38,15 @@
 // it should return a new array, where elements have been 
 // kept or excluded according to the callback. 
 // ----------------------------
-
+var filter = function(array,callback){ 
+	var updatedArray = []
+    for (var index = 0; index < array.length; index = index + 1){//we're iterating over the array that is calling the method
+        if (callback(array[index])) {
+    		updatedArray.push(array[index]) 
+            } 
+    }
+    return updatedArray
+}
 
 //  Part IV
 // ----------------------------
@@ -41,7 +65,12 @@
 
 // look at the tests for clarification.
 // ----------------------------
-
+var reduce = function(array, callback, runningTotal){ 
+    for (var i = 0; i < array.length; i++){//we're iterating over the array that is calling the method
+        runningTotal = callback(runningTotal,array[i]) //the job of our callback is to update the runningTotal. for every element, we replace the runningTotal with its updated version
+	} 
+    return runningTotal
+}
 
 //  HARD MODE
 // ----------------------------
